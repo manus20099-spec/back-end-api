@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple dashboard for viewing and adding MongoDB users."
+    />
+    <title>Users | Workspace</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="layout">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Workspace home">
+          <span class="brand-mark" aria-hidden="true">W</span>
+          <span>Workspace</span>
+        </a>
+        <span class="topbar-label">USER DIRECTORY</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">MONGODB USERS</p>
+        <h1 id="page-title">People, at a glance.</h1>
+        <p class="intro-copy">
+          Keep your directory up to date. Add a person and they’ll appear in the list.
+        </p>
+      </section>
+
+      <section class="content-grid" aria-label="User management">
+        <form class="panel form-panel" id="user-form">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">NEW ENTRY</p>
+              <h2>Add a user</h2>
+            </div>
+            <span class="step-number" aria-hidden="true">01</span>
+          </div>
+          <label for="name">Full name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            placeholder="e.g. Alex Morgan"
+            required
+          />
+          <label for="email">Email address</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="alex@example.com"
+            required
+          />
+          <button class="primary-button" id="submit-button" type="submit">
+            <span>Add to directory</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </form>
+
+        <section class="panel directory-panel" aria-labelledby="directory-title">
+          <div class="panel-heading directory-heading">
+            <div>
+              <p class="eyebrow">DIRECTORY</p>
+              <h2 id="directory-title">All users</h2>
+            </div>
+            <button class="refresh-button" id="refresh-button" type="button">
+              <span aria-hidden="true">↻</span>
+              Refresh
+            </button>
+          </div>
+          <p class="directory-count" id="directory-count">Loading users…</p>
+          <ul class="user-list" id="user-list" aria-live="polite">
+            <li class="empty-state">Connecting to the user directory…</li>
+          </ul>
+          <p class="list-message" id="list-message" role="alert"></p>
+        </section>
+      </section>
+      <footer>Simple tools for a more organized workspace.</footer>
+    </main>
+  </body>
+</html>

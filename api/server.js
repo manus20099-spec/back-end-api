@@ -2,6 +2,7 @@
 import "dotenv/config";
 import mongoose from "mongoose";
 import apiRoutes from "./routes/api.routes.js";
+import mongodbUsersRoutes from "./routes/mongodb-users.routes.js";
 import testRoutes from "./routes/test.routes.js";
 import userRoutes from "./routes/users.routes.js";
 import todoRoutes from "./routes/todos.routes.js";
@@ -11,6 +12,7 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use("/api", apiRoutes);
+app.use("/users", mongodbUsersRoutes);
 app.use((req, res, next) => {
   if (
     (req.path.startsWith("/user") || req.path.startsWith("/todo")) &&

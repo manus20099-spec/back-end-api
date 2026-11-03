@@ -1,0 +1,68 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "api": {
+      "root": "api",
+      "framework": "express",
+      "bindings": [
+        {
+          "type": "service",
+          "service": "mongodb-users",
+          "format": "url",
+          "env": "MONGODB_USERS_URL"
+        }
+      ]
+    },
+    "mongodb-users": {
+      "root": "mongodb-users",
+      "framework": "express"
+    },
+    "frontend": {
+      "root": "frontend"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/users",
+      "destination": {
+        "service": "api"
+      }
+    },
+    {
+      "source": "/users/(.*)",
+      "destination": {
+        "service": "api"
+      }
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "api"
+      }
+    },
+    {
+      "source": "/user/(.*)",
+      "destination": {
+        "service": "api"
+      }
+    },
+    {
+      "source": "/todo/(.*)",
+      "destination": {
+        "service": "api"
+      }
+    },
+    {
+      "source": "/test/(.*)",
+      "destination": {
+        "service": "api"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
+    }
+  ]
+}
